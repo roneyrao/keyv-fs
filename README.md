@@ -20,7 +20,7 @@ const Keyv = require('keyv');
 const KeyvFs = require('keyv-fs');
 
 const fsStore = new KeyvFs();
-const keyv = new Keyv({ store: redis });
+const keyv = new Keyv({ store: fsStore });
 ```
 
 ## Api
