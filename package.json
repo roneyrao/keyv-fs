@@ -1,0 +1,58 @@
+{
+  "name": "keyv-fs",
+  "version": "1.0.0",
+  "description": "file system storage adapter for keyv",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "xo && nyc -c false --reporter=lcov --reporter=text ava --serial --no-cache --verbose test/test.js",
+    "prebuild": "npm test",
+    "build": "babel src -d dist",
+    "prepublishOnly": "npm run build"
+  },
+  "xo": {
+    "extends": "xo-lukechilds"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/roneyrao/keyv-fs.git"
+  },
+  "keywords": [
+    "fs",
+    "filesystem",
+    "browser",
+    "http",
+    "local",
+    "memory",
+    "keyv",
+    "storage",
+    "adapter",
+    "key",
+    "value",
+    "store",
+    "cache"
+  ],
+  "files": [
+    "/dist"
+  ],
+  "author": "Roney Rao",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/roneyrao/keyv-fs/issues"
+  },
+  "homepage": "https://github.com/roneyrao/keyv-fs",
+  "dependencies": {
+    "rimraf": "^2.6.2"
+  },
+  "devDependencies": {
+    "@keyv/test-suite": "^1.6.10",
+    "ava": "^0.25.0",
+    "babel-cli": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "eslint-config-xo-lukechilds": "^1.0.0",
+    "keyv": "^3.0.0",
+    "memory-fs": "^0.4.1",
+    "nyc": "^11.4.1",
+    "pify": "^3.0.0",
+    "xo": "^0.20.1"
+  }
+}
