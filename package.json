@@ -1,6 +1,6 @@
 {
   "name": "keyv-fs",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "file system storage adapter for keyv",
   "main": "src",
   "scripts": {

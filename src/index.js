@@ -32,18 +32,19 @@ class KeyvFs extends EventEmitter {
 			rootDir = process.cwd();
 		}
 
-		const apiRs = fs.lstat('/abc', () => {});
-		if (!apiRs || (typeof apiRs.then) !== 'function') {
+		const apiResult = fs.lstat('/abc', () => {});
+		this.fs = {};
+		if (!apiResult || (typeof apiResult.then) !== 'function') {
 			['lstat', 'readFile', 'writeFile', 'unlink', 'rmdir', 'mkdir'].forEach(method => {
 				if (!fs[method]) {
 					this.throwError('file system doesn\'t support method - ' + method);
 				}
-				fs[method] = pify(fs[method].bind(fs));
+				this.fs[method] = pify(fs[method].bind(fs));
 			});
 		}
 
 		this.rootDir = rootDir;
-		this.fs = fs;
+		this.fsOriginal = fs;
 		this.clean = clean; // Clear existing folder
 	}
 
@@ -131,7 +132,7 @@ class KeyvFs extends EventEmitter {
 	get(key) {
 		return this.checkFolder().then(() => {
 			const filepath = this.getFilePath(key);
-			return this.fs.readFile(filepath).then(buf => buf.toString(), () => undefined);
+			return this.fs.readFile(filepath).then(buf => buf.toString(), () => {});
 		});
 	}
 
