@@ -80,7 +80,11 @@ class KeyvFs extends EventEmitter {
 							return this.clear();
 						}
 						return this.fs.readFile(this.metaFilePath).then(ctn => {
-							this.meta = JSON.parse(ctn);
+							if (ctn) {
+								this.meta = JSON.parse(ctn);
+							} else {
+								this.meta = {};
+							}
 						});
 					}, () => {
 						return this.createMeta();

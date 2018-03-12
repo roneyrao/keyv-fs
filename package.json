@@ -2,7 +2,7 @@
   "name": "keyv-fs",
   "version": "1.0.0",
   "description": "file system storage adapter for keyv",
-  "main": "src/index.js",
+  "main": "src",
   "scripts": {
     "test": "xo && nyc -c false --reporter=lcov --reporter=text ava --serial --no-cache --verbose test/test.js",
     "prebuild": "npm test",
@@ -44,6 +44,7 @@
     "rimraf": "^2.6.2"
   },
   "devDependencies": {
+    "xo": "^0.20.1",
     "@keyv/test-suite": "^1.6.10",
     "ava": "^0.25.0",
     "babel-cli": "^6.26.0",
@@ -52,7 +53,6 @@
     "keyv": "^3.0.0",
     "memory-fs": "^0.4.1",
     "nyc": "^11.4.1",
-    "pify": "^3.0.0",
-    "xo": "^0.20.1"
+    "pify": "^3.0.0"
   }
 }
